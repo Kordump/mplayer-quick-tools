@@ -12,7 +12,7 @@ Some use case, admit that I have a directory named `~/mkv` :
  - `rfs ~/mkv/primer_2004.mkv` will play my favourite movie.
  - `cd ~/mkv/music ; rall` will shuffle and play my favourite music.
  - `cd ~/mkv/music ; rall scatman` will shuffle and play the tracks form Scatman John.
- - `cd ~/mkv/music ; rall "hotline\*miami\*wrong\*number"` will shuffle and play the tracks from my favourite game.
+ - `cd ~/mkv/music ; rall "hotline*miami*wrong*number"` will shuffle and play the tracks from my favourite game.
  - `rloop music` will pick the first listed music and will loop it for ever.
  - `rloop nyan hour version` will find and play tons of nyan cat.
  - `cd ~/mkv/rick_and_morty/s1 ; rvid` will play the first episode of the season.
