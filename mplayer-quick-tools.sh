@@ -10,9 +10,9 @@ function rall()
 
 function rvid()
 {
-    cat =(lsq) | head -n 1 | xargs mplayer -fs
+    ls -Q --quoting-style escape | head -n 1 | xargs mplayer -fs
     mkdir __rvid_seen 2> /dev/null
-    cat =(lsq) | head -n 1 | xargs mv -t ./__rvid_seen
+    ls -Q --quoting-style escape | head -n 1 | xargs mv -t ./__rvid_seen
 }
 
 function rascii()
