@@ -1,6 +1,11 @@
 function rfs()
 {
-    mplayer -quiet -screenw 1366 -screenh 768 -fs $@ |& grep "^Playing" 2> /dev/null
+    mplayer -fixed-vo -quiet -screenw 1366 -screenh 768 -fs $@ |& grep "^Playing" 2> /dev/null
+}
+
+function rwin()
+{
+    mplayer -rootwin -quiet -screenw 1366 -screenh 768 -fs $@ |& grep "^Playing" 2> /dev/null
 }
 
 function rall()
@@ -13,7 +18,7 @@ function rall()
     tIFS=$IFS
     IFS=$'\0'
 
-    rfs $(find -type f -print0 | match $@ | sort -z -R)
+    rwin $(find -type f -print0 | match $@ | sort -z -R)
 
     IFS=$tIFS
 }
@@ -43,7 +48,7 @@ function rloop()
     IFS=$'\0'
 
     file=$(find -type f -print0 | match $@ | head -z -n 1)
-    rfs $file
+    rwin $file
 
     IFS=$tIFS
 }
