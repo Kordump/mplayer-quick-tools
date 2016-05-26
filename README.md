@@ -6,7 +6,6 @@ Tools to use mplayer in everyday life:
  - `rloop <pattern1> <pattern2> <pattern3>` : Loop the first file matching.
  - `rvid` : Play the next episode of the season, then move it to `./__rvid_seen`.
  - `rascii <filename>` : Play a file in ascii, no X server needed.
- - `findfile` : Find files.
 
 Some use case, admit that I have a directory named `~/mkv` :
  - `rfs ~/mkv/primer_2004.mkv` will play my favourite movie.
