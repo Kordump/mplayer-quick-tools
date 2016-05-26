@@ -5,7 +5,7 @@ function rfs()
 
 function rwin()
 {
-    mplayer -rootwin -quiet -screenw 1366 -screenh 768 -fs $@ |& grep "^Playing" 2> /dev/null
+    xwinwrap -fs -ov -- mplayer -wid WID -quiet -screenw 1366 -screenh 768 -fs $@ |& grep "^Playing" 2> /dev/null
 }
 
 function rall()
