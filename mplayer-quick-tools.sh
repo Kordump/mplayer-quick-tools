@@ -5,10 +5,15 @@ function rfs()
 
 function rall()
 {
+    function match()
+    {
+        grep --text -zi "$(echo -n $@ | sed 's/ /.*/g')"
+    }
+
     tIFS=$IFS
     IFS=$'\0'
 
-    rfs $(find -iname "*$1*" -print0 | sort -z -R)
+    rfs $(find -type f -print0 | match $@ | sort -z -R)
 
     IFS=$tIFS
 }
@@ -16,8 +21,6 @@ function rall()
 function rvid()
 {
     file=$(find -maxdepth 1 -iname "[^.][^_]*" -print0 | head -z -n 1)
-
-    echo "$file"
     rfs $file
 
     mkdir __rvid_seen 2> /dev/null
@@ -31,11 +34,15 @@ function rascii()
 
 function rloop()
 {
+    function match()
+    {
+        grep --text -zi "$(echo -n $@ | sed 's/ /.*/g')"
+    }
+
     tIFS=$IFS
     IFS=$'\0'
 
-    file=$(find -type f -print0 | grep -z -i "$(echo -n $@|sed 's/ /.*/g')" | head -z -n 1)
-    echo "$file"
+    file=$(find -type f -print0 | match $@ | head -z -n 1)
     rfs $file
 
     IFS=$tIFS
