@@ -1,6 +1,6 @@
 function rfs()
 {
-    mplayer -really-quiet -screenw 1366 -screenh 768 -fixed-vo -fs $@
+    mplayer -quiet -screenw 1366 -screenh 768 -fs $@ |& grep "^Playing" 2> /dev/null
 }
 
 function rall()
