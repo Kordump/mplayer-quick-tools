@@ -5,7 +5,12 @@ function rfs()
 
 function rall()
 {
-    eval mplayerfs $(find -iname "*$1*" -exec zsh -c "printf %q '{}' ; printf %b '\\n'" \; | sort -R)
+    tIFS=$IFS
+    IFS=$'\0'
+
+    rfs $(find -iname "*$1*" -print0 | sort -z -R)
+
+    IFS=$tIFS
 }
 
 function rvid()
