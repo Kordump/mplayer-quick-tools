@@ -29,15 +29,14 @@ function rascii()
     mplayer -vo aa -monitorpixelaspect 0.5 -shuffle $@
 }
 
-function findfile()
-{
-    find -type f -exec zsh -c "printf %q \"{}\" ; printf %b \"\\\\n\"" \; 2> /dev/null | sed -e 's:/\..*$::g' | sed -e 's:^.*__/.*::g' | cat
-}
-
 function rloop()
 {
-    a=${1:-.}
-    b=${2:-.}
-    c=${3:-.}
-    eval "mplayerfs -loop 0 $(findfile | grep -i $a | grep -i $b | grep -i $c | head -n 1)"
+    tIFS=$IFS
+    IFS=$'\0'
+
+    file=$(find -type f -print0 | grep -z -i "$(echo -n $@|sed 's/ /.*/g')" | head -z -n 1)
+    echo "$file"
+    rfs $file
+
+    IFS=$tIFS
 }
