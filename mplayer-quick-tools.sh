@@ -15,9 +15,13 @@ function rall()
 
 function rvid()
 {
-    ls -Q --quoting-style escape | head -n 1 | xargs mplayer -fs
+    file=$(find -maxdepth 1 -iname "[^.][^_]*" -print0 | head -z -n 1)
+
+    echo "$file"
+    rfs $file
+
     mkdir __rvid_seen 2> /dev/null
-    ls -Q --quoting-style escape | head -n 1 | xargs mv -t ./__rvid_seen
+    mv ./$file ./__rvid_seen 2> /dev/null
 }
 
 function rascii()
