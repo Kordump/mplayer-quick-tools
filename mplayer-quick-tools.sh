@@ -25,7 +25,7 @@ function rall()
 
 function rvid()
 {
-    file=$(find -maxdepth 1 -iname "[^.][^_]*" -print0 | head -z -n 1)
+    file=$(find -maxdepth 1 -iname "[^.][^_]*" -print0 | sort -z -n| head -z -n 1)
     rfs $file
 
     mkdir __rvid_seen 2> /dev/null
