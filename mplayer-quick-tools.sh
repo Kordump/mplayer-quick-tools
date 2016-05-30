@@ -48,7 +48,7 @@ function rloop()
     IFS=$'\0'
 
     file=$(find -type f -print0 | match $@ | head -z -n 1)
-    rwin $file
-
     IFS=$tIFS
+
+    while true ; do rwin $file ; done ;
 }
