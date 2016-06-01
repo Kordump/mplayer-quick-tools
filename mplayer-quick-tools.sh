@@ -1,11 +1,11 @@
 function rfs()
 {
-    mplayer -fixed-vo -quiet -screenw 1366 -screenh 768 -fs $@ |& grep "^Playing" 2> /dev/null
+    mplayer -fixed-vo -quiet -screenw 1366 -screenh 768 -fs $@ |& grep --text "^Playing" 2> /dev/null
 }
 
 function rwin()
 {
-    xwinwrap -fs -ov -- mplayer -wid WID -quiet -screenw 1366 -screenh 768 -fs $@ |& grep "^Playing" 2> /dev/null
+    xwinwrap -fs -ov -- mplayer -wid WID -quiet -screenw 1366 -screenh 768 -fs $@ |& grep --text "^Playing" 2> /dev/null
 }
 
 function rall()
