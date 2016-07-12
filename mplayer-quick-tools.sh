@@ -50,5 +50,9 @@ function rloop()
     file=$(find -type f -print0 | match $@ | head -z -n 1)
     IFS=$tIFS
 
-    while true ; do rwin $file ; done ;
+    while true
+        do rwin $file || break
+        read -t 1 -s  || continue
+        break
+    done
 }
